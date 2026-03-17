@@ -1,0 +1,119 @@
+version: 1
+updated_at: 2026-03-17
+strategy: skill-pack-by-domain
+
+packs:
+  git-collab-flow:
+    entrypoint: skills/git-collab-flow/scripts/run.sh
+    scripts:
+      - scripts/sync.sh
+      - scripts/merge.sh
+
+  upgrade-pipeline:
+    entrypoint: skills/upgrade-pipeline/scripts/run.sh
+    scripts:
+      - scripts/upgrade/check_code_status.sh
+      - scripts/upgrade/upload_packages.sh
+      - scripts/upgrade/download_packages.sh
+
+  docker-bootstrap:
+    entrypoint: skills/docker-bootstrap/scripts/run.sh
+    scripts:
+      - infra/docker/setup_aliyun.sh
+      - infra/docker/setup_ubuntu.sh
+      - infra/docker/install_ubuntu.sh
+      - infra/docker/setup-buildx-multiarch.sh
+
+  cert-ops:
+    entrypoint: skills/cert-ops/scripts/run.sh
+    scripts:
+      - infra/cert/certificate.sh
+      - infra/certbot/install.sh
+
+  openapi-scaffold:
+    entrypoint: skills/openapi-scaffold/scripts/run.sh
+    scripts:
+      - community/openapi/go.sh
+      - community/openapi/go/runner.sh
+      - community/openapi/java.sh
+      - community/openapi/java/runner.sh
+      - community/openapi/python.sh
+      - community/openapi/python/runner.sh
+      - community/openapi/typescript.sh
+      - community/openapi/typescript/runner.sh
+
+  ethereum-network-core:
+    entrypoint: skills/ethereum-network-core/scripts/run.sh
+    scripts:
+      - infra/ethereum/network/start-network.sh
+      - infra/ethereum/network/stop-network.sh
+      - infra/ethereum/network/config/setup-config.sh
+      - infra/ethereum/network/geth/geth-service.sh
+      - infra/ethereum/network/geth/check-status.sh
+      - infra/ethereum/network/geth/get-version.sh
+      - infra/ethereum/network/beacon/beacon-service.sh
+      - infra/ethereum/network/beacon/check-status.sh
+      - infra/ethereum/network/beacon/generate_szz.sh
+      - infra/ethereum/network/beacon/get-node.sh
+      - infra/ethereum/network/beacon/get-peer.sh
+      - infra/ethereum/network/validator/validator-service.sh
+      - infra/ethereum/network/validator/check-status.sh
+      - infra/ethereum/network/validator/generate-validators.sh
+      - infra/ethereum/network/erigon/check-status.sh
+      - infra/ethereum/network/share/common.sh
+
+  ethereum-network-utils:
+    entrypoint: skills/ethereum-network-utils/scripts/run.sh
+    scripts:
+      - infra/ethereum/network/util/install-dependency.sh
+      - infra/ethereum/network/util/extract-private-key.sh
+      - infra/ethereum/network/util/copy_to.sh
+      - infra/ethereum/network/util/copy_from.sh
+      - infra/ethereum/network/util/balance-eth.sh
+      - infra/ethereum/network/util/balance-token.sh
+
+  postgresql-ops:
+    entrypoint: skills/postgresql-ops/scripts/run.sh
+    scripts:
+      - middleware/postgresql/database.sh
+
+  redis-cluster-check:
+    entrypoint: skills/redis-cluster-check/scripts/run.sh
+    scripts:
+      - middleware/redis/test-redis-cluster.sh
+
+  waku-ops:
+    entrypoint: skills/waku-ops/scripts/run.sh
+    scripts:
+      - middleware/waku/start.sh
+      - middleware/waku/stop.sh
+      - middleware/waku/state.sh
+      - middleware/waku/publish.sh
+      - middleware/waku/consume.sh
+      - middleware/waku/subscription.sh
+      - middleware/nwaku/help.sh
+      - middleware/nwaku/nodekey.sh
+      - middleware/ipfs/scripts/start-ipfs.sh
+
+  tool-image-build:
+    entrypoint: skills/tool-image-build/scripts/run.sh
+    scripts:
+      - tool/bookstack/build_image_based_on_tag.sh
+      - tool/nextchat/build_image_based_on_tag.sh
+
+  ops-utility-box:
+    entrypoint: skills/ops-utility-box/scripts/run.sh
+    scripts:
+      - generate.sh
+      - script/compress_file.sh
+      - script/convert_16_2_10.sh
+      - script/generate_github_download_url.sh
+      - script/generate_key.sh
+      - script/generate_private_key.sh
+      - script/generate_password.sh
+      - script/periodic_bakup_wiki.sh
+
+  node-env-bootstrap:
+    entrypoint: skills/node-env-bootstrap/scripts/run.sh
+    scripts:
+      - developer/node/install.sh
